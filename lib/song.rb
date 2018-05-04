@@ -1,14 +1,22 @@
+require 'pry'
+
 class Song
 
     attr_accessor :name, :artist
-    attr_reader 
 
     def initialize(name)
         @name = name 
+        @artist = artist
     end
 
-    def self.new_by_filename
-        # creates a new instance of a song from the file that's passed in (FAILED - 13)
+    def self.new_by_filename(filename)
+        song = filename.split(" - ")
+        new_song = Song.new(song[1])
+        new_song.artist = Artist.find_or_create_by_name(song[0])
+        new_song
+        # binding.pry
     end
+
+    
 
 end
