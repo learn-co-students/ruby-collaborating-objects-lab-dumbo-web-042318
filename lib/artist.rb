@@ -28,7 +28,9 @@ class Artist
         # finds or creates an artist by name maintaining uniqueness of objects by name property (FAILED - 5)
         # Creates new instance of Artist if none exist (FAILED - 6)
         if Artist.all.find { |artist| artist.name == name} == nil
-            Artist.new(name)
+            new_artist = Artist.new(name)
+            new_artist.save
+            new_artist
         else 
             Artist.all.find { |artist| artist.name == name}
         end
